@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js"></script>
+	</head>
+	<body>
+		
+			姓名:<input type="text" name="username" id="username"/><br/>
+			密码:<input type="password" name="password" id="password"/><br/>
+		    <button id="login">登录</button><br/>
+		    <button id="reg">注册</button>
+		    
+		<script type="text/javascript">
+			$("#login").click(function(){
+				$.ajax({
+					url:"http://localhost:8080/aa",
+					data:{
+						username:$("#username").val(),
+						password:$("#password").val()
+					},
+					dataType:"text",
+					success(res){
+						let a = JSON.parse(res);
+						if(a.err==0){
+							location.href="1.html"
+						}else{
+							alert(a.msg)
+						}
+						
+                       
+ 					}
+				})
+			})
+			
+			
+		</script>
+	</body>
+</html>
